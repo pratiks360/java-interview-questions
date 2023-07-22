@@ -16,6 +16,17 @@ public class Student {
         subjects.add(subject);
     }
 
+    public double getAverageGrade() {
+        return this.calculateAverageGrade();
+    }
+
+    public double calculateAverageGrade() {
+        return subjects.stream()
+                .mapToInt(Subject::getGrade)
+                .average()
+                .orElse(0.0);
+    }
+
     public String getName() {
         return name;
     }
@@ -34,4 +45,6 @@ public class Student {
     public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
     }
+
+
 }
