@@ -28,14 +28,13 @@ public class StreamMain {
     }
 
 
-
     public static void filterStudentBySubject(School school) {
         String subjectName = "Math";
         List<Student> filteredStudents = school.getStudents().stream().filter(student -> student.getSubjects().stream()
                 .anyMatch(t -> t.getName().equalsIgnoreCase(subjectName))).collect(Collectors.toList());
 
 
-       Optional<Student> a =  school.getStudents().stream().filter(student -> student.getName().equalsIgnoreCase("alice")).findFirst();
+        Optional<Student> a = school.getStudents().stream().filter(student -> student.getName().equalsIgnoreCase("alice")).findFirst();
         System.out.println(a.get().getAge());
         for (Student student : filteredStudents) {
             System.out.println(student.getName());
@@ -73,7 +72,7 @@ public class StreamMain {
         }
     }
 
-    public static void studentWithHigestGrade(School school){
+    public static void studentWithHigestGrade(School school) {
 
         Optional<Student> highestGradeStudent = school.getStudents().stream().max(Comparator.comparingDouble(s -> s.getSubjects().stream()
                 .mapToDouble(Subject::getGrade).max().orElse(0.0)));
@@ -81,18 +80,17 @@ public class StreamMain {
         System.out.println(highestGradeStudent.get().getSubjects().stream().mapToDouble((Subject::getGrade)).max());
     }
 
-    public static void groupByStudentAge(School school){
+    public static void groupByStudentAge(School school) {
 
-        Map<Integer, List<Student>> grouped= school.getStudents()
+        Map<Integer, List<Student>> grouped = school.getStudents()
                 .stream()
                 .collect(Collectors.groupingBy(Student::getAge,
                         () -> new TreeMap<>(Collections.reverseOrder()),
                         Collectors.toList()));
 
-        grouped.forEach((age,students) ->
+        grouped.forEach((age, students) ->
                 System.out.println(age));
     }
-
 
 
 }

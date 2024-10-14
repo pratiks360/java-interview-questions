@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
+
 public class School {
     private List<Student> students;
+
     School() {
         students = new ArrayList<>();
     }
