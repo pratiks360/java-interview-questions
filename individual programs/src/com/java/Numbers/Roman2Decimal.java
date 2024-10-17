@@ -1,6 +1,16 @@
 package com.java.Numbers;// Program to convert Roman Numerals to Numbers
 
 class RomanToNumber {
+    // Driver method
+    public static void main(String args[]) {
+        RomanToNumber ob = new RomanToNumber();
+
+        // Considering inputs given are valid
+        String str = "MCMIV";
+        System.out.println("Integer form of Roman Numeral" +
+                " is " + ob.romanToDecimal(str));
+    }
+
     // This function returns value of a Roman symbol
     int value(char r) {
         if (r == 'I')
@@ -50,15 +60,5 @@ class RomanToNumber {
         }
 
         return res;
-    }
-
-    // Driver method
-    public static void main(String args[]) {
-        RomanToNumber ob = new RomanToNumber();
-
-        // Considering inputs given are valid
-        String str = "MCMIV";
-        System.out.println("Integer form of Roman Numeral" +
-                " is " + ob.romanToDecimal(str));
     }
 }
